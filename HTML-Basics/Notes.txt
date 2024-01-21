@@ -1,0 +1,65 @@
+=======================================================================================================================
+A markup language is one that is designed for defining and presenting text. 
+
+The <head> element is a container for metadata (data about data) and is placed between the <html> tag and the <body> tag. 
+Metadata is data about the HTML document. Metadata is not displayed.
+
+The <html> element is the root element and it defines the whole HTML document.
+
+=======================================================================================================================
+
+The charset attribute specifies the character encoding for the HTML document. 
+
+UTF-8 is encoding. It is how unicode numbers are translated into binary numbers to be stored in the computer: 
+=======================================================================================================================
+
+<a href="#">Challenges</a> 
+
+=>goes back to top of this current page
+without href in anchor tag content means nothing but simple text.
+
+in <img /> element one should always add alt="" attribute so as to let browser know about the images 
+=======================================================================================================================
+
+<header></header> used to tell the browser that whatever comes under this tag is header part.
+
+The <article> tag specifies independent, self-contained content. An article should make sense on its own and 
+it should be possible to distribute it independently from the rest of the site.
+
+The <article> element specifies independent, self-contained content. 
+
+The <section> element defines section in a document.
+
+sementic HTML ->meaning in language or logic in HTML.
+
+HTML entity -> &copy; represents copyright symbol. 
+
+https://css-tricks.com/snippets/html/glyphs/
+
+=======================================================================================================================
+sementic HTML
+
+having some purpose or meaning attached to element,think  about what that element means and what is stadns for.
+
+help in better analyze code for google for search engine optimization.
+
+helps the webpage reader which reads via screen reader.
+
+e.g. we used <strong> instead of <b> (bold) element or <em> istead of <i>
+=======================================================================================================================
+
+vs code extension
+
+image previewer
+color highlight
+prettier(installed at start)
+formatter (installed at start)
+HTML Live previewer(installed)
+auto rename tag (popular)
+live server
+
+=======================================================================================================================
+aside element ->complements the main part of the web page and is secondary information 
+  ->many times used as the side bar
+
+=======================================================================================================================
