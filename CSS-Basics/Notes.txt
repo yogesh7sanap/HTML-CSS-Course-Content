@@ -1,0 +1,405 @@
+==============================================================================================================
+css stands for cascading style sheets
+one of the core technology of the web
+
+describes the visual style and presentation for the the content written in HTML.
+----------------
+css rule 
+
+h1{ //declaration block
+
+  font-size: 20px; //property -font size + 20px is the values =>declaration/style
+}
+
+h1 ->selector
+
+---------------
+
+emoji prompt => window + .
+==============================================================================================================
+inline css ->uses html attribute called style ->inside html element ->should be good to not use
+  ->e.g. <h1 style="font-color='blue'"></h1>
+
+internal css -> uses <style></style> attribute 
+  ->can be used if css code is less
+
+external css -> link css file using <link href="css file path" rel=""stylesheet /> 
+  element to the html file and then code
+  ->best way to code is using external css
+
+  default font size 16 px 
+
+==============================================================================================================
+
+combining selector
+
+combine same css property into single css rule.
+
+this is a list selector
+h1,h2,h3,h4{
+
+}
+
+parent and descendent
+
+header p{
+
+}
+//here header is parent and p is child or descendent
+//similarly
+
+article header p{
+
+}
+
+==============================================================================================================
+using html structure element for css styling is not good practice as in future one may need to change but
+one way to avoid using the html element structure is selecting html elementwith certain name by using
+either id (#) or class (.) .
+
+class , ID selectors
+
+ID selectors 
+-> used #id_name
+->only 1 unique id per css file or html file in html elment
+
+in html element <p id="author"></p>
+#author{
+
+}
+
+
+class selector
+
+->used .class_name
+->we can use same class name for multiple html elment 
+
+int html element <p class="hello"></p>
+
+.hello{
+
+}
+
+comments in css /* */ 
+
+comments in html <!-- --> 
+
+for single p element we used three p css rule so which is applied actually all of them gets applied
+but more about that in later videos
+
+mostly class is prefered becuase using id incase some change is needed lead to error in big project
+
+
+->element selector - when we simply use html elment we apply css on it is called element selector.
+==============================================================================================================
+
+Working with colors
+
+RGB model
+  any color can be represented using the RGB model
+  values between 0 to 255
+  e.g. red color -255 red 0 blue 0 green
+    white coloe -255 red 255 green 255 blue
+
+rgb/rgba model 
+
+rgb(0,255,255)
+rgb with transparancy ("alpha")
+rgba(0,255,255,0.3)
+
+color picker in vscode for color selection
+
+hexadecimal model
+  values between 0 to ff 
+  e.g. #00ff00 for green [shorthand - #0f0]
+
+  ff here means 255
+
+in real world we used hexadecimal notation and if we need transparancy then rgba notation
+------------
+-Shades of grey
+
+when colors in all three channels are the same we get grey color
+e.g. we have 256 shades of grey color rgb(0,0,0) to #444444 to #b7b7b7 rgb(200,200,200) to rgb(255,255,255).
+
+in css rule when we have two same property it will use the last one
+
+shorthand property - We can use one property for defining (three -in case of the 'border') different properties
+e.g. border: 5px solid/dotted/dashed #1098ad;
+
+==============================================================================================================
+Pseudo Classes 
+
+css automatically figure out which is the first li element in the container
+
+e.g li:first-child ->will select first li element inside any parent element.
+
+li:first-child{
+
+}
+
+li:nth-child(2/odd/even) {
+
+}
+->this technique is often used with tables where you have alternating color for each row
+
+we need to mention inherited parent element in correct order
+ for accessing pseudo classes such as e.g. article header p:first-child
+
+-pseudo classed are mostly suited if all the child elements are same.
+
+-psuedo class is accessed using  " element_name : pseudo_class_name{ } " 
+==============================================================================================================
+
+Styling Hyperlinks
+
+a:link{
+  //to teget only href containing a element as a contain only text and not href attribute
+}
+
+-to get rid of underline in links we use text-transformation-None
+
+a:visited{
+  //styling when we visit a link
+}
+
+a:hover{
+  //styling when we hover a link
+}
+
+a:active{
+  //styling when we have clicked on a link
+}
+
+-order ->LVHA for styling a using pseudo class
+
+==============================================================================================================
+
+Google chrome dev tools
+
+ctrl +shift+i/j/h
+
+right click +inspect
+view ->developer tool
+==============================================================================================================
+
+css theory #1 Conflicts between Selectors
+highest 
+
+!important 
+  -with css value;
+>>>
+inline html
+>>>
+# id
+>>>
+. class or pseudo class
+>>>
+element e.g. footer >> p 
+
+-remember if both have same level then last css rule declared get applied
+
+
+==============================================================================================================
+
+Inheritance and the universal selector
+
+iheritance in css-element gets there property inhertied from the parent element
+
+parent element property simply gets passed down to the child mostly in case of text only
+
+e.g. border property is not passed down to childs
+
+overriding inherited styles -means each child element can have specific property and here priority of 
+child elements is higher
+
+*-universal selector
+  -selects everything on the page
+  -does not get inherited 
+  -element with lowest priority
+
+* vs body
+*
+  -applied to every element 
+  -no inheritance involved
+
+body
+  -all the styled we put in body selector will get inherited
+
+  
+==============================================================================================================
+Challenge #1
+ 
+cursor: pointer; 
+-to convert a pointer to cursor 
+==============================================================================================================
+CSS- BOX Model
+
+-determines how elements are displayed on the web page and define size
+
+-default behaviour of css box model for calculating the element height and element width.
+-Fill area ->related to backkground color and backkground image
+            ->as these will simply fill all the area expect border
+
+final element width = left border+left padding+content width+right padding+right border
+final element height = top border+top padding+content height+ bottom padding+bottom border
+==============================================================================================================
+using margins and paddings
+
+-so far we have used only px i.e. pixel as unit for different property size
+
+padding 20px 40px; ->here 20 px for top and bottom and 40 px for left and right
+
+/* here as margin and padding property are not related to text they dont 
+  get inherited hence we use universal selector */
+
+
+**one should always prefer either margin top or margin margin bottom (prefered) but not both.
+
+
+collapsing margins
+  -where e.g. one element has margin bottom as 15px and element below that element has margin top 
+  as 40 px then they both has 40px and not 40+15=55px . this is called collapsing margins
+==============================================================================================================
+Adding Dimensions
+
+-adding height and width properties to the element
+-we can use html attribute e.g. height and width for setting dimension but also 
+  we can use classs or id for that
+-specifing height and width in css is more common than in using  html attribute
+-specifing height='auto' will use the previously defined height
+
+% vs px (pixels)
+ -if width=100% means its 100% width with respect with width of its parent container
+ -responsive websites- websites than adapt to the screen width
+==============================================================================================================
+Centering our page
+
+  -auto incase can be calculated by browser
+  -margin-left:auto and 
+    margin-right:auto;
+==============================================================================================================
+Challenge #2
+
+done from my side
+
+  -margins cannot be used on small elements like <a></a> anchors
+==============================================================================================================
+CSS THEORY #4 TYPES OF BOXES
+
+inline boxes
+  -<img/> {inline as well as block},<a></a> and <strong></strong> occupies only its content area
+  -only occupies space as its content called inline boxes.
+  -paddings and margins are applied only horizontally
+  -heights and width do not apply
+  -no line break before and after the element
+  -e.g. display:inline will make its selector element as inline box
+
+block level boxes or elements
+  -h2,h2,p and header occupies whole page width of browser
+  -occupies whole width of browser page called block level elements or block level boxes
+  -e.g. display:block will make its selector element as block level element
+
+inline block level element
+  -mix of inline and block
+  -margins and padding gets applied
+  -height and width gets applied
+  -occupy space only for its content
+  -e.g. display:inline-block 
+  -img are inline-block boxes hence height and width gets applied as well as margins
+
+**mostly use the standard predefined box model and only use these above 3 if needed
+e.g. display:block or display:inline or display:inline-block
+==============================================================================================================
+CSS THEORY #5 ABSOLUTE POSITIONING
+
+Normal Flow
+  -position :relative
+  -elements are laid out according to there order in HTML.
+
+Absolute Positioning 
+  -postion: absolute
+  -No impact on surrounding element ,may overlap as well.
+  -We use top bottom, left or right to offset the elements from its relatively positioned container.
+  -here element is positioned using top,bottom,left,right according to the viewport 
+    but we need to set it to according to the parent element as relative
+    e.g. here if set body element as postion:relative to set according to the *first* relative parent element.**
+==============================================================================================================
+Pseudo Elements
+
+  -Elements that dont exists in HTML but we still can select and style in CSS.
+  -e.g. first letter of paragraph or text or first line of paragraph.
+
+  first line pseudo element
+    -p::first-line{
+
+    }
+  first letter pseudo element
+    -h1::first-letter
+      {
+
+      }
+
+  adjacent element selector or adjacent sibling selector-
+    -sibling element part of the same container element
+    -element right after another element inside same container is called as the adacent sibling selector.
+    -e.g. h3 + p::first-line
+    {
+      color:red;
+    } 
+    -here only first p element after h3 will be selected.
+    - "+" here is the adjacent sibling selector.
+
+  after and before pseudo element
+    -after pseudo element will select and style after that selected element content.
+    -e.g. h1::after{
+      content: "TOP";
+    }
+
+    **-by default and pseudo element is an inline element.
+    -hence to make to apply padding and margin we make it inline-block element using display:inline-block.
+
+  negative length-
+    -right : -25px;
+
+  -these pseudo element can be found HTML tree in dev tool but not in HTML file.
+
+  before pseudo element will have its content before the selected parent element.
+  e.g. h2::before -but here as we are selecting absolute positioning nothing will change okay.
+
+
+
+==============================================================================================================
+Develpoer skills #1: Googling and reading documentation
+  -search for main topic your looking for e.g. if its related to css
+    start searching on google with 'css ...'
+  -stackkoverflow ,mdn are mostly used to read documentation and resolve errors now chatgpt.
+  -"Never feel guilty to copy from google to resolve issue as developer never knows everything"
+
+==============================================================================================================
+
+Develpoer skills #2:  Debugging and asking questions
+  -debugging ->finding and fixing errors in code.
+
+  **-Use html validator tools e.g. validator.w3.org
+
+  **-diff checker - to check the difference in code; e.g. diffchecker.com
+
+  -bug in css 
+    -can be conflict in css.
+    -always try to keep selector specificity low.
+    -right click on element you think that has error and select inspect to directly check that element html 
+      and css in dev tool
+    -also in dev tool you change property values by doing up/down arrow or shift+(up/down) arrow.
+
+    -if somehow not able to fix then use diff checker to fix the error.
+
+  you can post your question in stack overflow or udemt q/a using codepen.io for code reference.
+==============================================================================================================
+
+Challenge #3
+
+  -search for how to add space between two characters in single word.
+  -position SALE word using p element.
+  -position color boxes using div element.
+==============================================================================================================
