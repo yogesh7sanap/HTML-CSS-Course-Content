@@ -1,0 +1,21 @@
+========================================================================================================
+Your very first web page
+------------------------------------------------------------------------------------------------------
+
+index.html =>the show web page the entry point is always named index.html to show on web browser
+  hence the first and main html file is always named index.html
+
+! + tab  ->to get the HTML structure
+
+========================================================================================================
+VS Code Setup
+
+auto save > onFocusChange
+
+default formatter -> pretier -code formatter
+
+tab size -> 2 (default 4)
+
+format on save -> checked(yes)
+
+color theme -> one monokoi extention/ monokoi (classic or pro-paid )/ light
