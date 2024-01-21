@@ -1,0 +1,441 @@
+Layouts: Floats, Flexbox and CSS Grid Fundamentals
+==================================================================================================================
+Section Intro-
+  building Layouts
+    -using Floats
+    -modern css flexbox, css grid
+
+
+==================================================================================================================
+Layout is a way in which text, images and other content is placed and arranged on the webpage.
+
+Layout gives visual structure and into which we can place our structure.
+2 types of layouts
+  1) Page Layout
+  2) Component Layout
+
+Bigger page layouts are made up of Components
+component themselves need to have some kind of layout. 
+Give smaller components some layout to form a bigger component and out of those bigger layouts we 
+form a bigger page.
+
+3 ways of building Layouts in CSS
+  1)float layouts
+    -old way of building layouts using css property 'float'.
+  2)Flexbox
+    -modern way of laying out elements in 1 dimensional row without using floats, Perfect for component layout.
+
+  3)CSS Grid
+    -For laying out element in a full-fledged 2 dimensional grid. Perfect for page layouts and complex components.
+==================================================================================================================
+
+Using FLOAT 
+
+Normally Float: left/right/none are used mainly.
+
+If we select an element with float: left then other elements after that will float towards left of that element.
+
+e.g. .author-img{
+  float-left;
+}
+//here element after this .author-img will float towards left.
+
+**lorem +enter => to create a bunch of text(called as blind text) for testing.
+
+to make element side by side we use again float:left on next element else it will overlap on img.
+.author{
+  float:left;
+}
+
+floated element can create marging around it usng margin property.
+
+If we are using float property then it means that content has been removed simply for any of it parent container.
+So make sure to debug it properly =>callapsing element or element height has been collapsed.
+
+==================================================================================================================
+Clearing floats
+
+using css proprty 'clear:both/left/right'.
+select which float we want to clear.
+
+**clear fix hack =>to obtain a parent element height as that was before collapse.
+  using clear on ::after/before pseudo elements
+
+  clear:both property works on block level element only.
+  
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: block;
+  /* clear:both works on block element only */
+}
+
+==================================================================================================================
+Building A Simple Float Layout-
+  Setting three main sections floating with each other using float.
+  resizing the width.
+==================================================================================================================
+Box Sizing- border-box
+  -default behaviour is called as content-box.
+  -we can define width or height and it remain no matter the padding or margin using border-box .
+  -box-sizing:border-box;
+  -after using this we can use padding or margin but it will simply be applied on content related to border.
+    i.e. width of content will get subtracted from padding we applied.
+
+==================================================================================================================
+Challenge #1
+
+  -based on previous challenge hence use previous code
+  -use border-box
+  -arrange content one after another using floats we learned
+  -create two boxes and arrange them side by side to image 
+  -between each box we have 40px space, -width 240px
+==================================================================================================================
+
+Introduction to flexbox-
+  -set display:flex on the container element which has a child.
+  -element will be now side by side.
+  -we call child elements flex items and parent as flex container.
+  -width of flex item will of that of its content. and height is of its largest height element if specified.
+  -vertical alignment in container
+    -align-items: center/end/stretch;
+          /* here if we dont specify size them element will take only its content height and width */
+          stretch will stretch as that of tallest element.
+  -horizontal alignment in container
+    -justify-content:center;
+        will center the around container.
+    -justify-content:space-between
+        this will evenly distribute space around the child elements.
+==================================================================================================================
+A Flexbox Overview
+  -set of related CSS properties for building 1-dimensional layouts
+  -empty space inside container can be divided by its child element automatically.
+  -solve problem of vertical centering and equal height problems.
+  -helps in aligning items one over another side by side.
+  -allows us to write fewer and clear code.
+
+Flexbox terminologies-
+  Flex Container-
+    -element over which flexbox is applied.
+    -display:flex;
+    -gap, justify-content,align-items,flex-direction,align-content,flex-wrap.
+  Flex Items-
+    -all the direct child elements of the flex-container.
+    -align-self,flex-grow,flex-shrink,flex-basis,flex:,order
+    
+  Main Axis
+    -Direction in which flex items are laid out is called as main-axis.
+    -we can changed it when needed.
+  Cross Axis
+    -perpendicular axis to main axis.
+    -we can changed it when needed.
+
+**TIP
+Flex Container properties.
+  gap: 0 | <length>
+    to create space between items without using margin
+
+  justify-content: flex-start |flex-end | center| space-between |space-around -space-evenly
+    align items along the main axis (horizontally,, by default)
+
+  align-items : stretch | flex-start | flex-end |center |baseline
+    to align items along the cross axis (vertical, by default) 
+
+  flex-direction : row |row-reverse |column | column-reverse
+    to define which is the main axis
+
+  flex-wrap: nowrap |wrap |wrap-reverse
+    to allow items to wrap into new line if they are too large.
+
+  align-content: stretch | flex-start | flex-end | center | space-between |space-around
+    only applied when there are multiple line (flex-wrap: wrap)
+
+**TIP
+Flex Item Properties-
+  align-self: auto | stretch | flex-start |flex-end | center |baseline
+    To overwrite align-items for individual flex items 
+
+  flex-grow:0 | <Integer>
+    To allow element to grow (0 means no, 1+ means yes)
+
+  flex-shrink: 1 | <integer>
+    To allow element to shrink (0 means no, 1+ means yes)
+
+  flex-basis: auto | <length>
+    To define an items width, instead of width property
+
+  flex: 0 1 1  | <int>  <int> <len>
+    reccomended shorthand for  <flex-grow> <flex-grow> <flex-basis> 
+    
+  order: 0 | <Integer>
+    to allow control of items , -1 makes first and +1 means it last. 
+==================================================================================================================
+Spacing and aligning Flex Items:
+
+  align-items: center;
+        /* here if we dont specify size them element will take only its content height and width */
+
+
+  justify-content: flex-start |flex-end | center| space-between |space-around -space-evenly
+    align items along the main axis (horizontally,, by default stretch)
+
+  align-items : stretch | flex-start | flex-end |center |baseline
+    to align items along the cross axis (vertical, by default stretch) 
+
+  align-self: auto | stretch | flex-start |flex-end | center |baseline
+    To overwrite align-items for individual flex items [ by default-stretch ].
+
+
+Changing the order in which flex items are displayed can be helpful to adapt from bigger layout to
+smaller layout screens e.g. mobile
+
+
+  gap: 90px;
+        /* to have a gap of 30px between flex items */
+
+  order: -1;
+        /* -1 will place flex item to the start of container. 0 is defult position  */
+  
+  order: 1;
+        /* here 1 or greater than 1 value will place flex item to last */
+      
+==================================================================================================================
+THe Flex Property
+
+  Flex:
+    -to size flex items
+
+   flex-grow:0 | <Integer>
+    To allow element to grow (0 means no, 1+ means yes)
+    default is 0
+
+  flex-shrink: 1 | <integer>
+    To allow element to shrink (0 means no, 1+ means yes)
+    default is 1
+
+  flex-basis: auto | <length>
+    To define an items width, instead of width property
+    default is auto
+
+  flex: 0 1 1  | <int>  <int> <len>
+    reccomended shorthand for  <flex-grow> <flex-grow> <flex-basis> 
+
+  
+------------------------------
+/* DEFAULTS:
+       flex-grow:0
+       flex-shrink:1
+       flex-basis:auto */
+
+flex-basis: 100px; */
+        /* to specify width of the flex items default is auto */
+        /* when content is larger than 100px then it will extend */
+        /* browser based on content length will figure out the optimal length */
+        /* by default flexbox is allowed to shrink container if we flex-basis:200px 
+        but if we set flex-shrink:0 then 200px length will ge applied */
+/* flex-shrink: 0; */
+        /* usage is not advisable but one can use it */
+
+/* flex-grow: 0; */
+        /* all the flex items will evenly divide the space of contaner */
+
+/* shorthand flex: */
+        flex: 0 0 200px;
+
+order: -1;
+        /* -1 will place flex item to the start of container. 0 is defult position  */
+
+        /* flex-grow: 2; */
+        /* gets the double of available empty space  */
+      
+    
+==================================================================================================================
+Adding Flexbox to our Project-
+  main-header, author-box and related post done using flexbox
+
+==================================================================================================================
+Building a simple flexbox layout
+  Build the layout of website using flexbox
+==================================================================================================================
+
+Challenge #2
+
+  product details remaining.
+
+  **TIP
+  Set all the flex-items to flex:1; so that width of all the flex items remains same.
+==================================================================================================================
+Introduction to CSS Grid-
+
+  -Most Modern and easiest way to build layout
+  -Grid container and Grid Items
+  -set container as display:grid;
+  -grid-template-columns: 250px 250px; will create 2 columns of 250px width
+
+  //inside container 
+        display: grid;
+        grid-template-columns: 200px 100px 100px 200px;
+        /* here content will be now be place in 4 columns and as many as row as possible according to grid items */
+        /* element stretch across entire cell */
+        /* as one cell has 150px height hence all row get that height as it is the maximum height in those 4 elements */
+        /* columns value here defines the width */
+
+        grid-template-rows: 300px 200px;
+        /*rows value here defines height  */
+        /* if one grid-items height which is 150px is less than defined 300px here then that grid item will have 150px height*/
+
+        gap: 20px; 
+        /* previously was grid-gap:20px */
+        /* is the only way to define space between grid items margins are not allowed */
+
+        row-gap: 60px;
+        /* define gap between rows */
+
+        column-gap: 30px;
+        /* defines gap between columns */
+==================================================================================================================
+CSS Grid Overview-
+
+  -set of css properties for building 2 dimensional layouts.
+  -divide container element into rows and columns
+  -for 1D layout use flexbox and for 2D layout use CSS grid
+  -unlike flexbox we can can not change axis direction in css grid.
+
+Grid container-
+  Container for all the grid items.
+  -made container by using 'display:grid;'
+
+Grid items-
+  each items inside a grid is called grid item.
+
+Grid cell-
+  every grid items is grid cell.
+  every column grid line and row grid line creates areas for grid items called grid cells.
+  grid cell can be without grid item.
+  e.g. 3*2 layout there are 5 grid items and 6 grid cells
+
+Grid Lines-
+  these are used to access grid cell.
+  and there are (no of columns+1) and (no of rows+1) length.
+
+Gutters/gaps-
+  spaces between grid items
+
+Grid track-
+  -can be a row or column.
+---------------------------------------
+Grid Container
+
+1) 
+grid-template-rows: <track-size>
+grid-template-columns: <track-size>
+
+  -to establish the grid row and column tracks. one length unit for each track. Any unit can be used, new fr fills unused space.
+
+2)
+row-gap: 0 | <length>
+column-gap: 0 | <length>
+gap=: 0 | <length>
+
+  -to create empty space between tracks.
+
+3)
+justify-items: stretch | start | center | end 
+align-items: stretch | start | center | end 
+  
+  -to align items inside rows/ column (horizontally/ vertically).
+
+4)
+justify-content: start | start | center | end ..
+align-content: start | start | center | end
+
+  -To align entire grid inside grid container. Only applied if container is larger than the grid.
+
+Grid Items
+
+1)
+**TIP
+grid-column: <start line> / <end line> | span <number>
+grid-row:  <start line> / <end line> | span <number>
+
+  -To place a grid item into a specific cell,based on line numbers span keyward can be used to span an item across more cells.
+
+2)
+justify-self: stretch | start | center  end
+align-self: stretch | start | center  end
+
+  -To overwrite justify-items / align-items for single items.
+
+This list of CSS Grid properties is not exhaustive, but enough to get started.
+----------------------------------------
+
+==================================================================================================================
+Sizing grid columns and rows-
+
+    -Fr unit -> is used for sizing each grid item into flexibal length according to the container size.
+      Fr srands for Fractional or fraction.
+    -using this we can fill all the available space.
+
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+      will take 4 columns and divide space into 4 parts equally. 
+
+    grid-template-columns: 2fr 2fr 2fr auto;
+      if we use auto then that grid item will take only width required for its content in grid item.
+
+    grid-template-columns: 2fr 2fr 2fr 2fr; this equivalent to => grid-template-columns: repeat(4,2fr);
+
+  Implit and explicit rows-
+    If we run out of space in grid then those row are called Implit rows.
+    If we explicitly define rows then those rows are called as Explicit rows.
+
+  If we define both rows and columns in fr then height and width will be defined using the max height or width element.
+  If we dont have max sixe defined then based in content size everyone else will get that max size having max content size.
+
+==================================================================================================================
+Placing and spanning Grid Items-
+
+Placing grid item in a other grid cell
+  -Intersection of grid lines creates a grid cell.
+
+  .el--8 {
+        grid-column: 2/3;
+        grid-row: 1/2;
+      }
+
+  .el--2 {
+        grid-column: 1/2;
+          grid-row: 2/3;
+      }
+  -if second line is 1 value greater than first line value them we can omit it.
+
+  e.g. above is same as below.
+  .el--2 {
+        grid-column: 1;
+          grid-row: 2;
+      }
+
+
+span is used with grid-column and grid-row for spanning flex item till given span value.
+
+grid-row: 1 / span 2;
+grid-column: 1 / span 3; 
+==================================================================================================================
+Aligning grid items and tracks-
+
+  -we can align both the  tracks inside the container.
+  -we can also align grid item inside of the track-
+    -sometime grid items have less size than grid cotainer or track.
+
+  -align grid track-
+
+==================================================================================================================
+
+Building up a simple CSS Grid Layout-
+
+==================================================================================================================
+Challenge #3
+
+Using CSS Grid
+Image width and height is column width and height 
+
+==================================================================================================================
