@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox</title>
+    <style>
+      .el--1 {
+        background-color: blueviolet;
+      }
+      .el--2 {
+        background-color: orangered;
+      }
+      .el--3 {
+        background-color: green;
+        height: 150px;
+      }
+      .el--4 {
+        background-color: goldenrod;
+      }
+      .el--5 {
+        background-color: palevioletred;
+      }
+      .el--6 {
+        background-color: steelblue;
+      }
+      .el--7 {
+        background-color: yellow;
+      }
+      .el--8 {
+        background-color: crimson;
+      }
+
+      .container {
+        /* STARTER */
+        font-family: sans-serif;
+        background-color: #ddd;
+        font-size: 32px;
+        margin: 40px;
+
+        /* FLEXBOX */
+
+        display: flex;
+        align-items: center;
+        /* here if we dont specify size them element will take only its content height and width */
+
+        justify-content: flex-start;
+        /* will move flex items to start horizontally */
+
+        gap: 90px;
+        /* to have a gap of 30px between flex items */
+      }
+
+      /* .el { 
+         margin-right: 30px; 
+        to have gap between flex items but here we use 'gap' in flex-container box only and not this one
+       } 
+       */
+      /* DEFAULTS:
+       flex-grow:0
+       flex-shrink:1
+       flex-basis:auto */
+
+      .el {
+        /* flex-basis: 100px; */
+        /* to specify width of the flex items default is auto */
+        /* when content is larger than 100px then it will extend */
+        /* browser based on content length will figure out the optimal length */
+        /* by default flexbox is allowed to shrink container if we flex-basis:200px 
+        but if we set flex-shrink:0 then 200px length will ge applied */
+        /* flex-shrink: 0; */
+        /* usage is not advisable but one can use it */
+
+        /* flex-grow: 0; */
+        /* all the flex items will evenly divide the space of contaner */
+
+        /* shorthand flex: */
+        /* flex: 0 0 200px; */
+
+        flex: 1;
+      }
+
+      .el--1 {
+        align-self: flex-start;
+        /* will align itself vertically for position*/
+
+        /* order: -1; */
+        /* -1 will place flex item to the start of container. 0 is defult position  */
+
+        /* flex-grow: 2; */
+        /* gets the double of available empty space  */
+      }
+
+      .el--5 {
+        align-self: stretch;
+        /* will stretch itself to the height of largest flex item or container you can say*/
+        order: 1;
+        /* here 1 or greater than 1 value will place flex item to last */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="el el--1">HTML</div>
+      <div class="el el--2">and</div>
+      <div class="el el--3">CSS</div>
+      <div class="el el--4">are</div>
+      <div class="el el--5">amazing</div>
+      <div class="el el--6">languages</div>
+      <!-- <div class="el el--7">to</div>
+      <div class="el el--8">learn</div> -->
+    </div>
+  </body>
+</html>
